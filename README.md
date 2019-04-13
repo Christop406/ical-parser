@@ -1,8 +1,10 @@
-# ical-parser
+# cal-parser
 
 ## What does it do?
 
-`ical-parser` parses a `.ics` file into a more-easily-usable JavaScript object.
+`cal-parser` parses a `.ics` file into a more-easily-usable JavaScript object.
+
+This package can also be found [on npm](https://www.npmjs.com/package/cal-parser)
 
 ### Why use this over Mozilla's [`ical`](https://github.com/mozilla-comm/ical.js/)?
 
@@ -17,14 +19,14 @@ I wanted to have this functionality in React Native, but unfortunately `ical` us
 ### To-Do
 
 (Help is appreciated!)
-- [ ] Optimize the parser.
+- [ ] Optimize the parser. (I threw this together quickly and JS is not my best language)
 - [ ] Ensure/Test Full [RFC-5545](https://tools.ietf.org/html/rfc5545) Compliance.
 - [ ] Add sorting the list by criteria.
 
 ## Usage
 
 ````javascript
-const ical = require('ical-parser');
+const ical = require('cal-parser');
 const fs = require("fs");
 
 const myCalendarString = fs.readFileSync("./test/ical/mine/test.ics", "utf-8");

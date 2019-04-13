@@ -1,7 +1,7 @@
 {
-  "name": "ical-parser",
+  "name": "cal-parser",
   "version": "1.0.0",
-  "description": "Parses iCal files",
+  "description": "JavaScript/Node library to parse iCal (.ics) files with few dependencies",
   "main": "index.js",
   "scripts": {
     "test": "mocha -s 50",
@@ -11,7 +11,7 @@
     "axios": "^0.18.0",
     "mocha": "^6.1.3"
   },
-  "author": "Chris Gilardi",
+  "author": "Chris Gilardi <cgilardi97@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "ical-date-parser": "^4.0.0",
