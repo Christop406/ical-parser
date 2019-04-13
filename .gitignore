@@ -1,0 +1,4 @@
+
+# Ignore Node_Modules and my test data
+
+node_modules/
