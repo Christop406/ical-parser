@@ -19,7 +19,6 @@ describe('ical parser', function() {
       //console.log(parsed.events[0]);
       //console.log("=== END EXAMPLE EVENT ===");
     });
-
     it('finds events', function() {
       assert(parsed.events.length > 0);
     });
@@ -42,6 +41,33 @@ describe('ical parser', function() {
     it('limits how many events to return', function() {
       const parsed2 = ical.parseString(largeIcalString, 2);
       assert.equal(parsed2.events.length, 2);
+    });
+    it('returns only a single day\'s events', function() {
+      assert.notEqual(parsed.getEventsOnDate, undefined);
+
+      let dateToFind = new Date(2019, 4, 24);
+      //s = Date.now();
+      let todayEvents = parsed.getEventsOnDate(dateToFind);
+      //e = Date.now();
+      console.log(dateToFind);
+      assert.notEqual(todayEvents, undefined);
+      assert(todayEvents.length > 0);
+      //console.log("Getting one day of events took " + (e - s) + "ms.")
+      console.log(todayEvents);
+    });
+    it('gets a week\'s worth of events (sort-of)', function() {
+      let startDate = new Date(2019, 3, 28);
+      let endDate = new Date(2019, 4, 4);
+      //s = Date.now();
+      let weeksEvents = parsed.getEventsBetweenDates(startDate, endDate, true);
+      //e = Date.now();
+      assert(weeksEvents.length > 0);
+      //console.log(weeksEvents);
+      //console.log("Getting 3 days of events took " + (e - s) + "ms.");
+      //let sorted = weeksEvents.sort((a, b) => {
+        //return a.matchingDates[0] < b.matchingDates[0];
+      //});
+      //console.log(sorted);
     });
   });
 });

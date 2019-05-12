@@ -1,6 +1,6 @@
 {
   "name": "cal-parser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "JavaScript/Node library to parse iCal (.ics) files with few dependencies",
   "main": "index.js",
   "scripts": {
