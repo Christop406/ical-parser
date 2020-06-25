@@ -1,5 +1,6 @@
 const iCalDateParser = require('ical-date-parser');
 const rrule = require('rrule');
+const moment = require('moment');
 
 module.exports.parseString = function(st, max) {
     let lines = getLines(st);
@@ -177,7 +178,15 @@ function getLines(icalString) {
 }
 
 function getDate(type, value) {
-    return type ? new Date(value.substring(0, 4), parseInt(value.substring(4, 6)) - 1, value.substring(6, 8)) : iCalDateParser(value);
+    if (value.includes('Z')) {
+      return type ? new Date(value.substring(0, 4), parseInt(value.substring(4, 6)) - 1, value.substring(6, 8)) : iCalDateParser(value);
+    }
+    else {
+      const newValue = moment.utc(value).format();
+      console.log('new Value', newValue)
+      return type ? new Date(newValue.substring(0, 4), parseInt(newValue.substring(4, 6)) - 1, newValue.substring(6, 8)) : iCalDateParser(newValue);
+    }
+    
 }
 
 function getDateStrict(value) {
