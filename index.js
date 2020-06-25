@@ -183,7 +183,6 @@ function getDate(type, value) {
     }
     else {
       const newValue = moment.utc(value).format().replace(/-/g,'').replace(/:/g,'');
-      console.log('new Value', newValue)
       return type ? new Date(newValue.substring(0, 4), parseInt(newValue.substring(4, 6)) - 1, newValue.substring(6, 8)) : iCalDateParser(newValue);
     }
     
