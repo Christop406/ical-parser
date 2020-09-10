@@ -61,11 +61,13 @@ module.exports.parseString = function(st, max) {
                 if(params['VALUE'] === 'DATE') {
                     events[event_count][k].value = getDate(params["VALUE"], value);
                 } else {
-                    if(params["TZID"] !== undefined) {
+                    /*if(params["TZID"] !== undefined) {
                         events[event_count][k].value = getDate(undefined, value.concat('Z'));
                     } else {
                         events[event_count][k].value = getDate(undefined, value);
-                    }
+                    }*/
+                    /**Leave tz management to users */
+                    events[event_count][k].value = getDate(undefined, value);
                 }
                 if(Object.keys(params).length > 0) events[event_count][k].params = {};
                 for(var p in params) {
