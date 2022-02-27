@@ -1,9 +1,11 @@
 import * as iCalDateParser from 'ical-date-parser';
-import rrule from 'rrule';
+import rrule, { RRule, RRuleSet, rrulestr } from 'rrule';
 import * as fs from 'fs';
-import { splitICSLines } from './lib/util';
+import { getDate, insert, Metadata, splitICSLines } from './lib/util';
 import { join } from 'path';
 import { createInterface } from 'readline';
+import { ICalKey } from './lib/ical-key';
+import { getEventsBetweenDates, getEventsOnDate } from './lib/parsed-event';
 
 export const parseString = (ics: string) => {
     const lines = splitICSLines(ics);
