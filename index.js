@@ -61,7 +61,14 @@ module.exports.parseString = function(st, max) {
                     events[event_count][k].value = getDate(params["VALUE"], value);
                 } else {
                     if(params["TZID"] !== undefined) {
+                      //Allow to parse as per GMT
                         events[event_count][k].value = getDate(undefined, value.concat('Z'));
+                        //If a locale exists, strip preceeding /
+                        if(params["TZID"].search(/\//) != -1){
+                          params["TZID"] = params["TZID"].slice(1);
+                        }
+                        //Pass to toLocaleString to reduce to GMT based on timezone
+                        events[event_count][k].value.toLocaleString(undefined, {timeZone: params["TZID"]});
                     } else {
                         events[event_count][k].value = getDate(undefined, value);
                     }
