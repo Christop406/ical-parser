@@ -4,12 +4,16 @@
   "description": "JavaScript/Node library to parse iCal (.ics) files with few dependencies",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -s 50",
-    "start": "node index.js"
+    "test": "mocha -r ts-node/register -s 50 test/**/*.spec.ts",
+    "start": "ts-node src/index.ts"
   },
   "devDependencies": {
+    "@types/mocha": "^9.1.0",
+    "@types/node": "^15.0.1",
     "axios": "^0.26.0",
-    "mocha": "^9.2.1"
+    "mocha": "^9.2.1",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
   },
   "author": "Chris Gilardi <cgilardi97@gmail.com>",
   "license": "MIT",
